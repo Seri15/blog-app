@@ -36,17 +36,8 @@
                 @endforeach
             </select>
 
-            <select name="tag" class="rounded-md border-gray-300 shadow-sm">
-                <option value="">All Tags</option>
-                @foreach ($tags as $tag)
-                    <option value="{{ $tag->slug }}" @selected(request('tag') === $tag->slug)>
-                        {{ $tag->name }}
-                    </option>
-                @endforeach
-            </select>
-
             <button type="submit" class="px-4 py-2 bg-gray-800 text-white rounded-md">Filter</button>
-            @if (request()->hasAny(['q', 'category', 'tag']))
+            @if (request()->hasAny(['q', 'category']))
                 <a href="{{ route('home') }}" class="px-4 py-2 border rounded-md">Clear</a>
             @endif
         </form>

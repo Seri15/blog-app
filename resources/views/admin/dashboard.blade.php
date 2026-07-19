@@ -35,9 +35,16 @@
             </div>
         </div>
 
-        <div class="flex justify-between items-center mb-4">
+        <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
             <h3 class="text-lg font-semibold">Recent Posts</h3>
-            <a href="{{ route('admin.posts.create') }}" class="px-4 py-2 bg-gray-800 text-white rounded-md text-sm">+ New Post</a>
+            <div class="flex flex-wrap gap-2">
+                <a href="{{ route('admin.categories.index') }}" class="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50">
+                    Categories
+                </a>
+                <a href="{{ route('admin.posts.create') }}" class="rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-700">
+                    + New Post
+                </a>
+            </div>
         </div>
 
         <div class="bg-white rounded-lg shadow-sm border divide-y">

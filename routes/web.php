@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
-use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Author\DashboardController as AuthorDashboardController;
 use App\Http\Controllers\Author\PostController as AuthorPostController;
 use App\Http\Controllers\CommentController;
@@ -61,7 +60,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
     Route::resource('posts', AdminPostController::class)->except(['show']);
     Route::resource('categories', CategoryController::class)->except(['create', 'edit', 'show']);
-    Route::resource('tags', TagController::class)->except(['create', 'edit', 'show']);
 });
 
 /*

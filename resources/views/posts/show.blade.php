@@ -1,6 +1,11 @@
 <x-guest-layout>
     <div class="max-w-3xl mx-auto px-4 py-8">
 
+        <a href="{{ route('home') }}" class="mb-6 inline-flex items-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-800">
+            <span aria-hidden="true">←</span>
+            <span class="ml-2">Back</span>
+        </a>
+
         @if ($post->featured_image)
             <img src="{{ Storage::url($post->featured_image) }}" alt="{{ $post->title }}" class="w-full h-64 object-cover rounded-lg mb-6">
         @endif
