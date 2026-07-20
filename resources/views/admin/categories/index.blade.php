@@ -1,6 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Manage Categories</h2>
+        <div class="flex items-center justify-between gap-3">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Manage Categories</h2>
+            <a href="{{ route('admin.dashboard') }}" class="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50">
+                Back
+            </a>
+        </div>
     </x-slot>
 
     <div class="py-8 max-w-3xl mx-auto px-4">

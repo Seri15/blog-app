@@ -45,7 +45,6 @@
         {{-- Post grid --}}
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             @forelse ($posts as $post)
-            <a href="{{ route('posts.show', $post) }}" class="block hover:shadow-lg transition rounded-lg border border-gray-200 bg-white shadow-sm">
                 <article class="border rounded-lg overflow-hidden shadow-sm">
                     @if ($post->featured_image)
                         <img src="{{ Storage::url($post->featured_image) }}" alt="{{ $post->title }}" class="w-full h-40 object-cover">

@@ -23,7 +23,7 @@
     <div>
         <label class="block text-sm font-medium mb-1">Category</label>
         <select name="category_id" class="w-full rounded-md border-gray-300">
-            <option value="">Others</option>
+            <option value="">-- None --</option>
             @foreach ($categories as $category)
                 <option value="{{ $category->id }}" @selected(old('category_id', $post->category_id ?? null) == $category->id)>
                     {{ $category->name }}
