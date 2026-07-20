@@ -38,7 +38,10 @@
 
         <div class="flex justify-between items-center mb-4">
             <h3 class="text-lg font-semibold">My Recent Posts</h3>
-            <a href="{{ route('author.posts.create') }}" class="px-4 py-2 bg-gray-800 text-white rounded-md text-sm">+ New Post</a>
+            <div class="flex flex-wrap gap-2">
+                <a href="{{ route('author.posts.index') }}" class="px-4 py-2 bg-gray-800 text-white rounded-md text-sm">My Posts</a>
+                <a href="{{ route('author.posts.create') }}" class="px-4 py-2 bg-gray-800 text-white rounded-md text-sm">+ New Post</a>
+            </div>
         </div>
 
         <div class="bg-white rounded-lg shadow-sm border divide-y">

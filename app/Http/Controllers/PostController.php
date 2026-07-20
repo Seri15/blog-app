@@ -13,7 +13,7 @@ class PostController extends Controller
     // Homepage: list published posts, with search + category/tag filter + pagination
     public function index(Request $request)
     {
-        $posts = Post::published()
+        $posts = Post::visibleTo(Auth::user())
             ->with(['author', 'category', 'tags'])
             ->search($request->query('q'))
             ->category($request->query('category'))

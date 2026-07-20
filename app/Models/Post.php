@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -51,6 +52,26 @@ class Post extends Model
 
     public function scopePublished(Builder $query): Builder
     {
+        return $query->where('status', 'published')
+            ->where('published_at', '<=', now());
+    }
+
+    public function scopeVisibleTo(Builder $query, ?\App\Models\User $user = null): Builder
+    {
+        $user = $user ?? Auth::user();
+
+        if ($user instanceof \App\Models\User && $user->isAdmin()) {
+            return $query;
+        }
+
+        if ($user instanceof \App\Models\User && $user->isAuthor()) {
+            return $query->where(function ($q) use ($user) {
+                $q->where(function ($sub) {
+                    $sub->where('status', 'published')->where('published_at', '<=', now());
+                })->orWhere('user_id', $user->id);
+            });
+        }
+
         return $query->where('status', 'published')
             ->where('published_at', '<=', now());
     }

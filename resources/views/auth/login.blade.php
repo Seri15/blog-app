@@ -40,9 +40,9 @@
                 </div>
 
                 <div class="mt-6 flex items-center justify-end">
-                    @if (Route::has('password.request'))
-                        <a class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" href="{{ route('password.request') }}">
-                            {{ __('Forgot your password?') }}
+                    @if (Route::has('register'))
+                        <a class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" href="{{ route('register') }}">
+                            {{ __('Register an account') }}
                         </a>
                     @endif
 

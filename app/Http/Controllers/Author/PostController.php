@@ -18,7 +18,8 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::with(['category', 'author'])
+        $posts = Post::visibleTo(Auth::user())
+            ->with(['category', 'author'])
             ->when($request->query('status'), fn ($q, $status) => $q->where('status', $status))
             ->when($request->query('mine'), fn ($q) => $q->where('user_id', Auth::id()))
             ->latest()

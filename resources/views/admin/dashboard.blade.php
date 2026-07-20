@@ -1,6 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
+        <div class="flex items-center justify-between gap-3">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
+            <a href="{{ route('home') }}" class="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50">
+                Home
+            </a>
+        </div>
     </x-slot>
 
     <div class="py-8 max-w-6xl mx-auto px-4">
@@ -38,8 +43,11 @@
         <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
             <h3 class="text-lg font-semibold">Recent Posts</h3>
             <div class="flex flex-wrap gap-2">
-                <a href="{{ route('admin.categories.index') }}" class="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50">
-                    Categories
+                <a href="{{ route('admin.posts.index') }}" class="rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-700">
+                    All Posts
+                </a>
+                <a href="{{ route('admin.categories.index') }}" class="rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-700">
+                    + Categories
                 </a>
                 <a href="{{ route('admin.posts.create') }}" class="rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-700">
                     + New Post
