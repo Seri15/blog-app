@@ -45,6 +45,7 @@
         {{-- Post grid --}}
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             @forelse ($posts as $post)
+            <a href="{{ route('posts.show', $post) }}" class="block hover:shadow-lg transition rounded-lg border border-gray-200 bg-white shadow-sm">
                 <article class="border rounded-lg overflow-hidden shadow-sm">
                     @if ($post->featured_image)
                         <img src="{{ Storage::url($post->featured_image) }}" alt="{{ $post->title }}" class="w-full h-40 object-cover">
@@ -54,7 +55,7 @@
                             <span class="text-xs uppercase tracking-wide text-gray-500">{{ $post->category->name }}</span>
                         @endif
                         <h2 class="font-semibold text-lg mt-1">
-                            <a href="{{ route('posts.show', $post) }}" class="hover:underline">{{ $post->title }}</a>
+                            {{ $post->title }}
                         </h2>
                         <p class="text-sm text-gray-600 mt-2">{{ Str::limit($post->excerpt ?? strip_tags($post->content), 100) }}</p>
                         <div class="text-xs text-gray-400 mt-3 flex justify-between">
@@ -63,6 +64,7 @@
                         </div>
                     </div>
                 </article>
+            </a>
             @empty
                 <p class="text-gray-500 col-span-full">No posts found.</p>
             @endforelse
