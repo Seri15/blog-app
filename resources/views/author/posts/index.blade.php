@@ -1,17 +1,19 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Posts</h2>
+        <div class="flex items-center justify-between gap-3">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">My Posts</h2>
+            <a href="{{ route('author.dashboard') }}" class="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50">
+                Back
+            </a>
+        </div>
     </x-slot>
 
     <div class="py-8 max-w-6xl mx-auto px-4">
         <div class="flex justify-between mb-4 flex-wrap gap-2">
             <div class="flex gap-2">
-                <a href="{{ route('author.posts.index') }}" class="px-3 py-1 border rounded {{ !request('mine') ? 'bg-gray-800 text-white' : '' }}">All Authors</a>
-                <a href="{{ route('author.posts.index', ['mine' => 1]) }}" class="px-3 py-1 border rounded {{ request('mine') ? 'bg-gray-800 text-white' : '' }}">Mine Only</a>
-                <span class="border-l mx-1"></span>
-                <a href="{{ route('author.posts.index', request()->only('mine') + ['status' => null]) }}" class="px-3 py-1 border rounded {{ !request('status') ? 'bg-gray-800 text-white' : '' }}">All Status</a>
-                <a href="{{ route('author.posts.index', request()->only('mine') + ['status' => 'published']) }}" class="px-3 py-1 border rounded {{ request('status') === 'published' ? 'bg-gray-800 text-white' : '' }}">Published</a>
-                <a href="{{ route('author.posts.index', request()->only('mine') + ['status' => 'draft']) }}" class="px-3 py-1 border rounded {{ request('status') === 'draft' ? 'bg-gray-800 text-white' : '' }}">Drafts</a>
+                <a href="{{ route('author.posts.index', ['status' => null]) }}" class="px-3 py-1 border rounded {{ !request('status') ? 'bg-gray-800 text-white' : '' }}">All Status</a>
+                <a href="{{ route('author.posts.index', ['status' => 'published']) }}" class="px-3 py-1 border rounded {{ request('status') === 'published' ? 'bg-gray-800 text-white' : '' }}">Published</a>
+                <a href="{{ route('author.posts.index', ['status' => 'draft']) }}" class="px-3 py-1 border rounded {{ request('status') === 'draft' ? 'bg-gray-800 text-white' : '' }}">Drafts</a>
             </div>
             <a href="{{ route('author.posts.create') }}" class="px-4 py-2 bg-gray-800 text-white rounded-md text-sm">+ New Post</a>
         </div>

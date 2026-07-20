@@ -4,28 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
-use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    // Homepage: list published posts, with search + category/tag filter + pagination
+    // Homepage: list published posts, with search + category filter + pagination
     public function index(Request $request)
     {
         $posts = Post::visibleTo(Auth::user())
-            ->with(['author', 'category', 'tags'])
+            ->with(['author', 'category'])
             ->search($request->query('q'))
             ->category($request->query('category'))
-            ->tag($request->query('tag'))
             ->latest('published_at')
             ->paginate(9)
             ->withQueryString();
 
         $categories = Category::withCount('posts')->orderBy('name')->get();
-        $tags = Tag::orderBy('name')->get();
 
-        return view('posts.index', compact('posts', 'categories', 'tags'));
+        return view('posts.index', compact('posts', 'categories'));
     }
 
     // Single post view
@@ -43,7 +40,7 @@ class PostController extends Controller
 
         $post->increment('views_count');
 
-        $post->load(['author', 'category', 'tags', 'comments.user']);
+        $post->load(['author', 'category', 'comments.user']);
 
         $related = Post::published()
             ->where('id', '!=', $post->id)

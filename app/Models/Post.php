@@ -33,11 +33,6 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class);
-    }
-
     public function comments()
     {
         return $this->hasMany(Comment::class)->where('approved', true)->latest();
@@ -96,15 +91,6 @@ class Post extends Model
         }
 
         return $query->whereHas('category', fn ($q) => $q->where('slug', $categorySlug));
-    }
-
-    public function scopeTag(Builder $query, ?string $tagSlug): Builder
-    {
-        if (! $tagSlug) {
-            return $query;
-        }
-
-        return $query->whereHas('tags', fn ($q) => $q->where('slug', $tagSlug));
     }
 
     // --- Helpers ---

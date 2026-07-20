@@ -23,7 +23,7 @@
     <div>
         <label class="block text-sm font-medium mb-1">Category</label>
         <select name="category_id" class="w-full rounded-md border-gray-300">
-            <option value="">— None —</option>
+            <option value="">Others</option>
             @foreach ($categories as $category)
                 <option value="{{ $category->id }}" @selected(old('category_id', $post->category_id ?? null) == $category->id)>
                     {{ $category->name }}
@@ -38,19 +38,6 @@
             <option value="draft" @selected(old('status', $post->status ?? 'draft') === 'draft')>Draft</option>
             <option value="published" @selected(old('status', $post->status ?? 'draft') === 'published')>Published</option>
         </select>
-    </div>
-</div>
-
-<div class="mb-4">
-    <label class="block text-sm font-medium mb-1">Tags</label>
-    <div class="flex flex-wrap gap-3">
-        @php $selectedTags = old('tags', isset($post) ? $post->tags->pluck('id')->toArray() : []); @endphp
-        @foreach ($tags as $tag)
-            <label class="text-sm flex items-center gap-1">
-                <input type="checkbox" name="tags[]" value="{{ $tag->id }}" @checked(in_array($tag->id, $selectedTags))>
-                {{ $tag->name }}
-            </label>
-        @endforeach
     </div>
 </div>
 

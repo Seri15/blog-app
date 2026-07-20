@@ -21,12 +21,6 @@
             &middot; {{ $post->views_count }} views
         </div>
 
-        <div class="flex flex-wrap gap-2 mt-3">
-            @foreach ($post->tags as $tag)
-                <a href="{{ route('home', ['tag' => $tag->slug]) }}" class="text-xs bg-gray-100 px-2 py-1 rounded">#{{ $tag->name }}</a>
-            @endforeach
-        </div>
-
         <div class="prose max-w-none mt-6">
             {!! nl2br(e($post->content)) !!}
         </div>
