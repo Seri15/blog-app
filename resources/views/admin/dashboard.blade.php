@@ -49,6 +49,9 @@
                 <a href="{{ route('admin.categories.index') }}" class="rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-700">
                     + Categories
                 </a>
+                <a href="{{ route('admin.authors.index') }}" class="rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-700">
+                    All Authors
+                </a>
                 <a href="{{ route('admin.posts.create') }}" class="rounded-md bg-gray-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-700">
                     + New Post
                 </a>
